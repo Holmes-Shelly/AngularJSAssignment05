@@ -1,0 +1,42 @@
+<div class="container">
+    <form name="formSignUp" class="form-signup" novalidate>
+        <h2 class="form-signup-heading">Sign Up</h2>
+        <label>First Name</label>
+          <input type="text" name="firstName" ng-model="signUpCtrl.user.firstName"
+                 class="form-control" placeholder="Your First Name" required>
+          <span class="error" ng-if="formSignUp.firstName.$error.required && formSignUp.firstName.$touched">
+          First Name Required!</span>
+        <label>Last Name</label>
+          <input type="text" name="lastName" ng-model="signUpCtrl.user.lastName"
+                 class="form-control" placeholder="Your Last Name" required>
+          <span class="error" ng-if="formSignUp.lastName.$error.required && formSignUp.lastName.$touched">
+          Last Name Required!</span>
+        <label>Email</label>
+          <input type="email" name="email" ng-model="signUpCtrl.user.email"
+                 class="form-control" placeholder="Email Address" required>
+          <span class="error" ng-if="formSignUp.email.$invalid && formSignUp.email.$touched">
+          Enter a valid email address: handle@domain format</span>
+        <label>Phone</label>
+          <input type="text" name="phone" ng-model="signUpCtrl.user.phone"
+                 class="form-control" placeholder="Phone ###-###-####" pattern="(\d{3})-(\d{3})-(\d{4})" required>
+          <span class="error" ng-if="formSignUp.phone.$invalid && formSignUp.phone.$touched">
+          Phone must be in the format ###-###-####</span>
+        <label>Favorite Dish</label>
+          <input type="text" name="dish" ng-model="signUpCtrl.user.dish"
+                 class="form-control" placeholder="Your Favorite Dish" pattern="[A-Z]\d{1,2}" required>
+          <span class="error" ng-if="formSignUp.dish.$invalid && formSignUp.dish.$touched">
+          Please enter correct short name of your favorite dish</span>
+        <div class="checkbox">
+          <label>
+          <input type="checkbox"> Do you want to receive our newsletter?
+          </label>
+        </div>
+        <button ng-disabled="formSignUp.$invalid" ng-click="signUpCtrl.submit()" class="btn btn-lg btn-success btn-block" type="submit">Sign Up</button>
+        <div>
+          <span ng-show="signUpCtrl.msgSave">
+          Your message has already been saved.</span>
+          <span ng-hide="signUpCtrl.dishExist">
+          Caution: Your favorite dish doesn't exist.</span>
+        </div>
+    </form>
+  </div>
